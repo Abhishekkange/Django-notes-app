@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>All Notes</title>
+    <script src="https://unpkg.com/htmx.org@1.9.5"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 min-h-screen p-8">
+
+    <h1 class="text-3xl font-bold mb-8 text-center">All Notes</h1>
+
+    <div id="notes-container" 
+         hx-get="/get-notes/" 
+         hx-trigger="load" 
+         hx-target="#notes-container" 
+         hx-swap="innerHTML"
+         class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Notes will load here via HTMX -->
+    </div>
+
+</body>
+</html>
