@@ -30,5 +30,23 @@ def getNotes(request):
     #get notes from db and then send it as html cards
     notes = ToDo.objects.all().order_by('-created_at')
     #loop through these notes
-    
+
+def updateNote(request):
+    #check for POST request 
+    if request.method == "POST":
+        try:
+
+            old_title = request.POST.get("old_title")
+            new_title = request.POST.get("new_title")
+            new_description = request.POST.get("new_description")
+            #find obj using old title and update the title and description with new ones
+            todo = ToDo.objects.get(title=old_title)
+            todo.title = new_title
+            todo.description = new_description
+            print("Note Updated")
+            return HttpResponse("Note Updated Successfully !")
+        except:
+            print("Note not found !")
+            return HttpResponse("Note not found !")
+        
     
